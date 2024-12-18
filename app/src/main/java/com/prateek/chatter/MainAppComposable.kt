@@ -38,7 +38,8 @@ fun MainApp() {
                 }
             )) {
                 val channelId = it.arguments?.getString("channelId") ?: ""
-                ChatScreen(navController, channelId)
+                val channelName = it.arguments?.getString("channelName") ?: ""
+                ChatScreen(navController, channelId,channelName)
             }
         }
     }

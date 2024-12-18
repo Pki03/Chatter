@@ -32,9 +32,21 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes += "META-INF/DEPENDENCIES"
+            excludes +="META-INF/LICENSE"
+            excludes +="META-INF/LICENSE.txt"
+            excludes +="META-INF/NOTICE"
+            excludes +="META-INF/NOTICE.txt"
+            excludes +="mozilla/public-suffix-list.txt"
+        }
     }
     kotlinOptions {
         jvmTarget = "1.8"
@@ -74,9 +86,13 @@ dependencies {
     kapt(libs.dagger.hilt.compiler)
     implementation(libs.dagger.hilt.compose)
     implementation(libs.coil)
-    implementation(platform("com.google.firebase:firebase-bom:32.8.0")) // Already latest
+    implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-database")
     implementation("com.google.firebase:firebase-storage")
+    implementation ("com.google.firebase:firebase-messaging")
+    implementation ("com.google.auth:google-auth-library-oauth2-http:1.19.0")
+    implementation("com.guolindev.permissionx:permissionx:1.8.0")
+
 }
