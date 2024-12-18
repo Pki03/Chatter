@@ -7,38 +7,31 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.prateek.chatter.feature.auth.signin.SignInScreen
 import com.prateek.chatter.feature.auth.signup.SignUpScreen
 import com.prateek.chatter.feature.home.HomeScreen
 
 @Composable
-
-fun MainApp(){
-    Surface(modifier=Modifier.fillMaxSize())
-    {
+fun MainApp() {
+    Surface(modifier = Modifier.fillMaxSize()) {
         val navController = rememberNavController()
-        val currentuser=FirebaseAuth.getInstance().currentUser
-        val start = if(currentuser!=null) "home" else "login"
-        NavHost(navController = navController, startDestination = "start") {
 
-            composable("login")
-            {
+        // Check if the user is already authenticated
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        val startDestination = if (currentUser != null) "home" else "login"
+
+        NavHost(navController = navController, startDestination = startDestination) {
+
+            composable("login") {
                 SignInScreen(navController)
             }
-            composable("signup")
-            {
+            composable("signup") {
                 SignUpScreen(navController)
             }
-            composable("home")
-            {
+            composable("home") {
                 HomeScreen(navController)
             }
-            
-
-
         }
     }
-
 }
