@@ -2,16 +2,6 @@
 
 This is a real-time chat application built using Jetpack Compose for the Android UI and Firebase for backend services. Users can send text messages and images, interact with various chat channels, and manage permissions for camera access.
 
-## Table of Contents
-
-- [Getting Started](#getting-started)
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [App Structure](#app-structure)
-- [Setup Instructions](#setup-instructions)
-- [Usage](#usage)
-- [Further Improvements](#further-improvements)
-
 ## Getting Started
 
 To get started with this project, follow the steps below to set up the app on your local machine.
@@ -24,14 +14,7 @@ Ensure that you have the following installed:
 - [Java JDK 8 or higher](https://www.oracle.com/java/technologies/javase-downloads.html)
 - A Firebase account for setting up Firebase services like Firebase Realtime Database, Firebase Storage, and Firebase Authentication.
 
-### Setup Instructions
-
-**Clone the repository**:
-
-   ```bash
-   git clone https://github.com/yourusername/chat-app.git
-   cd chat-app
-
+###
 
 A simple real-time chat application where users can send text and image messages, manage chat channels, and interact through a dynamic chat interface. Built with Jetpack Compose, Firebase, and Kotlin.
 
@@ -81,3 +64,13 @@ The app is structured into several main components:
 - **ChatBubble**: Displays individual chat messages in a bubble format.
 - **ChatViewModel**: Manages chat data, including sending messages, uploading images, and fetching messages.
 - **HomeViewModel**: Manages the list of channels and handles the creation of new channels.
+
+
+### Setup Instructions
+
+**Clone the repository**:
+
+   ```bash
+   git clone https://github.com/yourusername/chat-app.git
+   cd chat-app
+
