@@ -1,6 +1,6 @@
 # Chatter
 
-This is a real-time chat application built using Jetpack Compose for the Android UI and Firebase for backend services. Users can send text messages and images, interact with various chat channels, and manage permissions for camera access.
+This is a sophisticated real-time chat application built with **Jetpack Compose** for creating an intuitive and dynamic Android user interface, and **Firebase** for seamless backend services. The app enables users to send both text and image messages, interact with multiple chat channels, and easily manage camera and storage permissions for image uploads.
 
 ## Getting Started
 
@@ -65,6 +65,77 @@ The app is structured into several main components:
 - **ChatViewModel**: Manages chat data, including sending messages, uploading images, and fetching messages.
 - **HomeViewModel**: Manages the list of channels and handles the creation of new channels.
 
+## Features
+
+### ChatScreen Composable:
+- **Scaffold Setup**: Provides the main UI layout for the chat interface.
+- **ViewModel & State**: Uses `ChatViewModel` to manage state such as dialog visibility and image URI.
+- **Launchers**:
+  - `cameraImageLauncher`: Launches the camera to capture images.
+  - `imageLauncher`: Allows users to select images from the gallery.
+  - `permissionLauncher`: Requests camera permissions if not granted yet.
+- **Image URI Creation**: Generates a temporary URI for storing captured images.
+- **UI Structure**: Displays chat interface with message input and image sending options.
+- **Chooser Dialog**: Lets users choose between camera or gallery for image selection.
+
+### ContentSelectionDialog Composable:
+- Simple dialog to select between camera or gallery for image picking.
+
+### ChatMessages Composable:
+- **Message Display**: Displays chat messages in a `LazyColumn`.
+- **Message Input**: Input field for sending text messages.
+- **Image Attachment**: Icon to attach images from the gallery or camera.
+- **Message Sending**: Sends messages using the `onSendMessage` callback.
+
+### ChatBubble Composable:
+- Displays messages in chat bubbles with different styles for the current user and others.
+- If the message has an image URL, it shows the image; otherwise, it displays text.
+
+### ChatViewModel:
+- **State Management**: Uses `MutableStateFlow` to manage the list of messages.
+- **sendMessage()**: Sends text/image messages to Firebase Realtime Database.
+- **sendImageMessage()**: Uploads images to Firebase Storage and sends the URL to the database.
+- **listenForMessages()**: Listens for incoming messages and updates the UI.
+- **registerUserInChannel()**: Adds the user to the channel's user list in Firebase.
+
+### Firebase Integration:
+- **Realtime Database**: Stores messages and user data in Firebase Realtime Database.
+- **Firebase Storage**: Stores image files uploaded by users.
+- **Firebase Authentication**: Uses Firebase Auth to authenticate users and associate messages with the sender.
+
+### Permissions:
+- **Camera Permission**: Requests camera permission if not granted already.
+
+---
+
+### HomeScreen Composable:
+- **ViewModel & State**: Manages the list of channels using `HomeViewModel` and handles the state for the "Add Channel" dialog.
+- **Scaffold**: Structured with a Floating Action Button (FAB) for adding new channels and a search bar (search functionality not yet implemented).
+- **Channel List**: Displays existing channels in a `LazyColumn`, each linked to a specific chat screen.
+- **Add Channel Dialog**: A bottom sheet dialog for entering the name of a new channel.
+
+### ChannelItem Composable:
+- Displays each channel in a rounded box. Clicking on a channel navigates to its respective chat screen.
+
+### AddChannelDialog Composable:
+- Provides a `TextField` for entering a new channel name and a button to add the channel.
+
+### HomeViewModel:
+- **State Management**: Uses `MutableStateFlow` to manage channels and exposes them as a `StateFlow` for the UI.
+- **Fetching Channels**: Retrieves the list of channels from Firebase Realtime Database using the `getChannels()` method.
+- **Adding a New Channel**: Adds a new channel to Firebase and refreshes the channel list.
+
+### Firebase Integration:
+- **Realtime Database**: Channels are fetched and stored in the Firebase Realtime Database.
+
+### UI Layout and Behavior:
+- **FAB**: Positioned at the bottom-right corner to trigger the "Add Channel" process.
+- **Modal Bottom Sheet**: Used for adding a new channel through an input dialog.
+
+### Summary:
+- **HomeScreen**: Displays a list of channels, allows searching (not yet implemented), and supports creating new channels via a bottom sheet dialog.
+
+
 
 ### Setup Instructions
 
@@ -72,5 +143,5 @@ The app is structured into several main components:
 
    ```bash
    git clone https://github.com/yourusername/chat-app.git
-   cd chat-app
+   cd chatter
 
