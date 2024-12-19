@@ -2,7 +2,8 @@
 
 This is a sophisticated real-time chat application built with **Jetpack Compose** for creating an intuitive and dynamic Android user interface, and **Firebase** for seamless backend services. The app enables users to send both text and image messages, interact with multiple chat channels, and easily manage camera and storage permissions for image uploads.
 
-![App Screenshot](https://imgur.com/XpcYiAN)
+[![Watch this video](https://img.youtube.com/vi/9Wg3r_1JmTU/0.jpg)](https://www.youtube.com/watch?v=9Wg3r_1JmTU)
+
 
 
 
